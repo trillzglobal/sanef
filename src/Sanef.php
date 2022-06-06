@@ -97,4 +97,54 @@ class Sanef extends Validate {
         $data = $this->checkAgentDetails($data);
         return $this->report($data);
     }
+
+    public function createWallet(array $data){
+        $data = $this->checkCreateWallet($data);
+        return $this->report($data);
+    }
+
+    public function createAccount(array $data){
+        $data = $this->checkCreateAccount($data);
+        return $this->report($data);
+    }
+    
+    public function validateCashCode(array $data){
+        $data = $this->checkValidateCashCode($data);
+        return $this->report($data);
+    }
+
+    public function approveCashCode(array $data){
+        $data = $this->checkApproveCashCode($data);
+        return $this->report($data);
+    }
+
+    public function requeryCashCodeStatus(array $data){
+        $data = $this->checkRequeryCashCodeStatus($data);
+        return $this->report($data);
+    }
+
+    public function log(array $data){
+        $data = $this->checkLog($data);
+        return $this->report($data);
+    }
+
+    public function history(array $data){
+        $data = $this->checkHistory($data);
+        return $this->report($data);
+    }
+
+    public function cardRequestSendOtp (array $data){
+        $data = $this->checkCardRequestSendOtp($data);
+        return $this->report($data);
+    }
+
+    public function cardRequestLinkCard(array $data){
+        $data = $this->checkcardRequestLinkCard($data);
+        return $this->report($data);
+    }
+
+    public function queryAccountOpeningStatus(array $data){
+        $data = $this->checkQueryAccountOpeningStatus($data);
+        return $this->report($data);
+    }
 }
