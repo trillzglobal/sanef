@@ -1,0 +1,23 @@
+{
+    "name": "trillzglobal/sanef",
+    "description": "Sanef Integration to consume all Sanef endpoint",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Trillzglobal\\Sanef\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michael Ojo",
+            "email": "trillzglobal@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php" : ">=7.4.0",
+        "guzzlehttp/guzzle": ">=7.4.x-dev"
+
+    }
+}
