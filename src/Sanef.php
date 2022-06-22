@@ -13,6 +13,8 @@ class Sanef extends Validate {
     public $payload;
     public $gpgPassphrase;
     public $base_url;
+    public $encryptedPayload;
+    public $checked_data;
     
 
     public function __construct( string $baseURL, string $superAgentCode, string $gpgKey, string $gpgPassphrase="")
@@ -36,7 +38,7 @@ class Sanef extends Validate {
         return $plain;
     }
 
-    private function call(){
+    public function call(){
         
         $client = new Client();
         try{
@@ -80,15 +82,15 @@ class Sanef extends Validate {
             return json_encode($data);
         }
         $this->payload = json_encode($data);
-        $this->gpgPayload = json_encode(["data"=>$this->encrypt()]);
+        // $this->gpgPayload = json_encode(["data"=>$this->encrypt()]);
 
-        return $this->call();
+       // return $this->call();
     }
 
     public function createAgent(array $data){
         $this->endpoint = "api/v1/agents/create";
-        $data = $this->checkCreateAgent($data);
-       return $this->report($data);
+        $checked_data = $this->checkCreateAgent($data);
+      return $this->report($data);
     }
 
     public function updateAgent(array $data){
