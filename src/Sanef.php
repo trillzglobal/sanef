@@ -63,12 +63,12 @@ class Sanef extends Validate {
         }catch(RequestException $e){
 
             if($e->hasResponse())
-            $data =(string) $e->getResponse()->getBody(true);
+                $data =(string) $e->getResponse()->getBody(true);
             $data = json_decode($data, true);
             if(!empty($data["data"])){
                 $data = json_decode($this->decrypt($data["data"]), true);
             }
-            $response =json_encode(["data"=>$data, "status"=>"failed"]);
+            $response =json_encode(["data"=>$data ? $data : $e, "status"=>"failed"]);
         }
 
         return $response;
