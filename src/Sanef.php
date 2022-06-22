@@ -1,5 +1,5 @@
 <?php
-namespace TrillzGlobal\Sanef;
+namespace Sanef;
 use \GuzzleHttp\{
     Client,
     Exception\ClientException,

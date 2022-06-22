@@ -1,5 +1,5 @@
 <?php
-namespace TrillzGlobal\Sanef;
+namespace Sanef;
 
 class Validate{
 
