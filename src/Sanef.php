@@ -68,7 +68,7 @@ class Sanef extends Validate {
             if(!empty($data["data"])){
                 $data = json_decode($this->decrypt($data["data"]), true);
             }
-            var_dump($e);
+            // var_dump($e);
             $response =json_encode(["data"=>$data ? $data : $e, "status"=>"failed"]);
         }
 
@@ -82,7 +82,7 @@ class Sanef extends Validate {
         if($data["status"] == "error"){
             return json_encode($data);
         }
-        $this->payload = json_encode($data);
+        $this->payload = json_encode($data['details']);
         // $this->gpgPayload = json_encode(["data"=>$this->encrypt()]);
 
        // return $this->call();
@@ -90,7 +90,7 @@ class Sanef extends Validate {
 
     public function createAgent(array $data){
         $this->endpoint = "api/v1/agents/create";
-        $checked_data = $this->checkCreateAgent($data);
+        $data = $this->checkCreateAgent($data);
       return $this->report($data);
     }
 
