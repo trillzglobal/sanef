@@ -59,7 +59,6 @@ class Sanef extends Validate
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 $data = curl_exec($ch);
                 var_dump($data);
-                print_r($data);
                 // $request =  $client->request('POST', $this->base_url . $this->endpoint, [
                 //     'headers' => ["ClientID" => $this->superAgentCode, "Content-Type" => "application/json"],
                 //     'body' => $this->gpgPayload,
