@@ -48,19 +48,18 @@ class Sanef extends Validate
 
         $client = new Client();
         try {
+            
 
             if (!empty($this->gpgPayload)) {
                 
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $this->base_url . $this->endpoint);
                 curl_setopt($ch, CURLOPT_HEADER, true);
-                curl_setopt($ch, CURLOPT_HTTPHEADER, ["ClientID" => $this->superAgentCode, "Content-Type" => "application/json"]);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, ["ClientID: $this->superAgentCode" , "Content-Type: application/json"]);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $this->gpgPayload);
-                // print_r($this->gpgPayload);
                 curl_setopt($ch, CURLOPT_POST, 1);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 $data = curl_exec($ch);
-                var_dump($data);
                 // $request =  $client->request('POST', $this->base_url . $this->endpoint, [
                 //     'headers' => ["ClientID" => $this->superAgentCode, "Content-Type" => "application/json"],
                 //     'body' => $this->gpgPayload,
@@ -70,9 +69,9 @@ class Sanef extends Validate
                 $request =  $client->request('GET', $this->base_url . $this->endpoint, [
                     'headers' => ["ClientID" => $this->superAgentCode, "Content-Type" => "application/json"]
                 ]);
-                //Body of response
                 $data = (string) $request->getBody(true);
             }
+            var_dump($data);
             $data = json_decode($data, true);
             // $data = json_decode($this->decrypt($data["data"]), true);
             $response = json_encode(["data" => $data, "status" => "success"]);
