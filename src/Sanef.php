@@ -71,7 +71,7 @@ class Sanef extends Validate
                 ]);
                 $data = (string) $request->getBody(true);
             }
-            // var_dump($data);
+            var_dump($data);
             $data = json_decode($data, true);
             // $data = json_decode($this->decrypt($data["data"]), true);
             $response = json_encode(["data" => $data, "status" => "success"]);
