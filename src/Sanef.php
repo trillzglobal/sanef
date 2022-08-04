@@ -54,7 +54,7 @@ class Sanef extends Validate
                 
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $this->base_url . $this->endpoint);
-                curl_setopt($ch, CURLOPT_HEADER, true);
+                // curl_setopt($ch, CURLOPT_HEADER, true);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, ["ClientID: $this->superAgentCode" , "Content-Type: application/json"]);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $this->gpgPayload);
                 curl_setopt($ch, CURLOPT_POST, 1);
@@ -74,7 +74,7 @@ class Sanef extends Validate
             var_dump($data);
             $data = json_decode($data, true);
             // $data = json_decode($this->decrypt($data["data"]), true);
-            $response = json_encode(["data" => $data, "status" => "success"]);
+            $response = json_encode(["data" => $data["Data"], "status" => "success"]);
         } catch (RequestException $e) {
 
             if ($e->hasResponse())
