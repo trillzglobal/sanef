@@ -106,7 +106,7 @@ class Sanef extends Validate
 
     public function createAgent(array $data)
     {
-        // $this->endpoint = "api/v1/agents/create";
+        $this->endpoint = "api/v1/agents/create";
         $data = $this->checkCreateAgent($data);
         return $this->report($data);
     }
