@@ -113,72 +113,84 @@ class Sanef extends Validate
 
     public function updateAgent(array $data)
     {
+        $this->endpoint = "api/v1/agents/update";
         $data = $this->checkUpdateAgent($data);
         return $this->report($data);
     }
 
     public function agentDetails(array $data)
     {
+        $this->endpoint = "api/v1/agents/agentDetails";
         $data = $this->checkAgentDetails($data);
         return $this->report($data);
     }
 
     public function createWallet(array $data)
     {
+        $this->endpoint = "api/v1/accounts/createWallet";
         $data = $this->checkCreateWallet($data);
         return $this->report($data);
     }
 
     public function createAccount(array $data)
     {
+        $this->endpoint = "api/v1/accounts/createAccount";
         $data = $this->checkCreateAccount($data);
         return $this->report($data);
     }
 
     public function validateCashCode(array $data)
     {
+        $this->endpoint = "api/v1/thirdparty/validateCashCode";
         $data = $this->checkValidateCashCode($data);
         return $this->report($data);
     }
 
     public function approveCashCode(array $data)
     {
+        $this->endpoint = "api/v1/thirdparty/approveCashCode";
         $data = $this->checkApproveCashCode($data);
         return $this->report($data);
     }
 
     public function requeryCashCodeStatus(array $data)
     {
+        $this->endpoint = "api/v1/thirdparty/requeryCashCodeStatus";
         $data = $this->checkRequeryCashCodeStatus($data);
         return $this->report($data);
     }
 
     public function log(array $data)
     {
+        $this->endpoint = "api/v1/disputes/log";
         $data = $this->checkLog($data);
         return $this->report($data);
     }
 
     public function history(array $data)
     {
+        $this->endpoint = "api/v1/disputes/history";
         $data = $this->checkHistory($data);
         return $this->report($data);
     }
 
     public function cardRequestSendOtp(array $data)
     {
+        $this->endpoint = "api/v1/accounts/cardRequest/sendOtp";
         $data = $this->checkCardRequestSendOtp($data);
         return $this->report($data);
     }
 
     public function cardRequestLinkCard(array $data)
     {
+        $this->endpoint = "api/v1/accounts/cardRequest/linkCard";
         $data = $this->checkcardRequestLinkCard($data);
         return $this->report($data);
     }
 
     public function queryAccountOpeningStatus(array $data)
     {
+        $this->endpoint = "api/v1/accounts/queryAccountOpeningStatus";
         $data = $this->checkQueryAccountOpeningStatus($data);
         return $this->report($data);
     }
