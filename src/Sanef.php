@@ -65,13 +65,13 @@ class Sanef extends Validate
                 //     'body' => $this->gpgPayload,
                 //     'debug' => true
                 // ]);
+                var_dump($data);
             } else {
                 $request =  $client->request('GET', $this->base_url . $this->endpoint, [
                     'headers' => ["ClientID" => $this->superAgentCode, "Content-Type" => "application/json"]
                 ]);
                 $data = (string) $request->getBody(true);
             }
-            var_dump($data);
             $data = json_decode($data, true);
             // $data = json_decode($this->decrypt($data["data"]), true);
             $response = json_encode(["data" => $data["Data"], "status" => "success"]);
