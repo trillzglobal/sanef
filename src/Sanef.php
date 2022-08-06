@@ -112,9 +112,9 @@ class Sanef extends Validate
     /*
     Create New Agent
     */
-    private function report($data, $method)
+    private function report($data)
     {
-        $this->method = $method;
+        //$this->method = $method;
         if ($data["status"] == "error") {
             return json_encode($data);
         }
@@ -126,94 +126,105 @@ class Sanef extends Validate
 
     public function createAgent(array $data, $method )
     {
-        $method = 'POST';
+        $this->method = $method;
         $this->endpoint = "api/v1/agents/create";
         $data = $this->checkCreateAgent($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 
     public function updateAgent(array $data, $method)
     {
-        $method = 'PUT';
+        $this->method = $method;
         $this->endpoint = "api/v1/agents/update";
         $data = $this->checkUpdateAgent($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 
     public function agentDetails(array $data, $method)
     {
+        $this->method = $method;
         $this->endpoint = "api/v1/agents/agentDetails";
         $data = $this->checkAgentDetails($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 
     public function createWallet(array $data, $method)
     {
+        $this->method = $method;
         $this->endpoint = "api/v1/accounts/createWallet";
         $data = $this->checkCreateWallet($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 
     public function createAccount(array $data, $method)
     {
+        $this->method = $method;
         $this->endpoint = "api/v1/accounts/createAccount";
         $data = $this->checkCreateAccount($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 
     public function validateCashCode(array $data, $method)
     {
+        $this->method = $method;
         $this->endpoint = "api/v1/thirdparty/validateCashCode";
         $data = $this->checkValidateCashCode($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 
     public function approveCashCode(array $data, $method)
     {
+        $this->method = $method;
         $this->endpoint = "api/v1/thirdparty/approveCashCode";
         $data = $this->checkApproveCashCode($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 
     public function requeryCashCodeStatus(array $data, $method)
     {
+        $this->method = $method;
         $this->endpoint = "api/v1/thirdparty/requeryCashCodeStatus";
         $data = $this->checkRequeryCashCodeStatus($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 
     public function log(array $data, $method)
     {
+        $this->method = $method;
         $this->endpoint = "api/v1/disputes/log";
         $data = $this->checkLog($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 
     public function history(array $data, $method)
     {
+        $this->method = $method;
         $this->endpoint = "api/v1/disputes/history";
         $data = $this->checkHistory($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 
     public function cardRequestSendOtp(array $data, $method)
     {
+        $this->method = $method;
         $this->endpoint = "api/v1/accounts/cardRequest/sendOtp";
         $data = $this->checkCardRequestSendOtp($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 
     public function cardRequestLinkCard(array $data, $method)
     {
+        $this->method = $method;
         $this->endpoint = "api/v1/accounts/cardRequest/linkCard";
         $data = $this->checkcardRequestLinkCard($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 
     public function queryAccountOpeningStatus(array $data, $method)
     {
+        $this->method = $method;
         $this->endpoint = "api/v1/accounts/queryAccountOpeningStatus";
         $data = $this->checkQueryAccountOpeningStatus($data);
-        return $this->report($data, $method);
+        return $this->report($data);
     }
 }
