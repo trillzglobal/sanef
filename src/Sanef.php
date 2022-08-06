@@ -87,9 +87,11 @@ class Sanef extends Validate
                     'headers' => ["ClientID" => $this->superAgentCode, "Content-Type" => "application/json"]
                 ]);
                 $data = (string) $request->getBody(true);
+                var_dump($data);
             }
             $data = json_decode($data, true);
             // $data = json_decode($this->decrypt($data["data"]), true);
+            var_dump($data);
             $response = json_encode(["data" => $data["Data"], "status" => "success"]);
         } catch (RequestException $e) {
 
