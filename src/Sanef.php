@@ -18,6 +18,7 @@ class Sanef extends Validate
     public $base_url;
     public $encryptedPayload;
     public $checked_data;
+    public $method;
 
 
     public function __construct(string $baseURL, string $superAgentCode, string $gpgKey, string $gpgPassphrase = "")
@@ -50,14 +51,30 @@ class Sanef extends Validate
         try {
 
 
-            if (!empty($this->gpgPayload)) {
+            if (!empty($this->gpgPayload) && $this->method == 'POST') {
 
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $this->base_url . $this->endpoint);
                 // curl_setopt($ch, CURLOPT_HEADER, true);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, ["ClientID: $this->superAgentCode", "Content-Type: application/json"]);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $this->gpgPayload);
-//                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                $data = curl_exec($ch);
+                // $request =  $client->request('POST', $this->base_url . $this->endpoint, [
+                //     'headers' => ["ClientID" => $this->superAgentCode, "Content-Type" => "application/json"],
+                //     'body' => $this->gpgPayload,
+                //     'debug' => true
+                // ]);
+                var_dump($data);
+            }
+            else if (!empty($this->gpgPayload) && $this->method == 'PUT') {
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $this->base_url . $this->endpoint);
+                // curl_setopt($ch, CURLOPT_HEADER, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, ["ClientID: $this->superAgentCode", "Content-Type: application/json"]);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $this->gpgPayload);
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT", 1);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 $data = curl_exec($ch);
@@ -67,8 +84,9 @@ class Sanef extends Validate
                 //     'debug' => true
                 // ]);
                 var_dump($data);
-            } else {
-                $request =  $client->request('GET', $this->base_url . $this->endpoint, [
+            } 
+            else {
+                $request =  $client->request($this->method, $this->base_url . $this->endpoint, [
                     'headers' => ["ClientID" => $this->superAgentCode, "Content-Type" => "application/json"]
                 ]);
                 $data = (string) $request->getBody(true);
@@ -94,8 +112,9 @@ class Sanef extends Validate
     /*
     Create New Agent
     */
-    private function report($data)
+    private function report($data, $method)
     {
+        $this->method = $method;
         if ($data["status"] == "error") {
             return json_encode($data);
         }
@@ -105,94 +124,96 @@ class Sanef extends Validate
         // return $this->call();
     }
 
-    public function createAgent(array $data)
+    public function createAgent(array $data, $method )
     {
+        $method = 'POST';
         $this->endpoint = "api/v1/agents/create";
         $data = $this->checkCreateAgent($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 
-    public function updateAgent(array $data)
+    public function updateAgent(array $data, $method)
     {
+        $method = 'PUT';
         $this->endpoint = "api/v1/agents/update";
         $data = $this->checkUpdateAgent($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 
-    public function agentDetails(array $data)
+    public function agentDetails(array $data, $method)
     {
         $this->endpoint = "api/v1/agents/agentDetails";
         $data = $this->checkAgentDetails($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 
-    public function createWallet(array $data)
+    public function createWallet(array $data, $method)
     {
         $this->endpoint = "api/v1/accounts/createWallet";
         $data = $this->checkCreateWallet($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 
-    public function createAccount(array $data)
+    public function createAccount(array $data, $method)
     {
         $this->endpoint = "api/v1/accounts/createAccount";
         $data = $this->checkCreateAccount($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 
-    public function validateCashCode(array $data)
+    public function validateCashCode(array $data, $method)
     {
         $this->endpoint = "api/v1/thirdparty/validateCashCode";
         $data = $this->checkValidateCashCode($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 
-    public function approveCashCode(array $data)
+    public function approveCashCode(array $data, $method)
     {
         $this->endpoint = "api/v1/thirdparty/approveCashCode";
         $data = $this->checkApproveCashCode($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 
-    public function requeryCashCodeStatus(array $data)
+    public function requeryCashCodeStatus(array $data, $method)
     {
         $this->endpoint = "api/v1/thirdparty/requeryCashCodeStatus";
         $data = $this->checkRequeryCashCodeStatus($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 
-    public function log(array $data)
+    public function log(array $data, $method)
     {
         $this->endpoint = "api/v1/disputes/log";
         $data = $this->checkLog($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 
-    public function history(array $data)
+    public function history(array $data, $method)
     {
         $this->endpoint = "api/v1/disputes/history";
         $data = $this->checkHistory($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 
-    public function cardRequestSendOtp(array $data)
+    public function cardRequestSendOtp(array $data, $method)
     {
         $this->endpoint = "api/v1/accounts/cardRequest/sendOtp";
         $data = $this->checkCardRequestSendOtp($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 
-    public function cardRequestLinkCard(array $data)
+    public function cardRequestLinkCard(array $data, $method)
     {
         $this->endpoint = "api/v1/accounts/cardRequest/linkCard";
         $data = $this->checkcardRequestLinkCard($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 
-    public function queryAccountOpeningStatus(array $data)
+    public function queryAccountOpeningStatus(array $data, $method)
     {
         $this->endpoint = "api/v1/accounts/queryAccountOpeningStatus";
         $data = $this->checkQueryAccountOpeningStatus($data);
-        return $this->report($data);
+        return $this->report($data, $method);
     }
 }
