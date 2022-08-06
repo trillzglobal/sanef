@@ -48,14 +48,14 @@ class Sanef extends Validate
 
         $client = new Client();
         try {
-            
+
 
             if (!empty($this->gpgPayload)) {
-                
+
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $this->base_url . $this->endpoint);
                 // curl_setopt($ch, CURLOPT_HEADER, true);
-                curl_setopt($ch, CURLOPT_HTTPHEADER, ["ClientID: $this->superAgentCode" , "Content-Type: application/json"]);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, ["ClientID: $this->superAgentCode", "Content-Type: application/json"]);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $this->gpgPayload);
                 curl_setopt($ch, CURLOPT_POST, 1);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
