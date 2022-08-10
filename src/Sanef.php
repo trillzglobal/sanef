@@ -101,7 +101,7 @@ class Sanef extends Validate
             if (!empty($data["data"])) {
                 $data = json_decode($this->decrypt($data["data"]), true);
             }
-            // var_dump($e);
+            var_dump($e);
             $response = json_encode(["data" => $data ? $data : $e, "status" => "failed"]);
         }
 
