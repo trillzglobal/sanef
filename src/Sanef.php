@@ -65,7 +65,7 @@ class Sanef extends Validate
                 //     'body' => $this->gpgPayload,
                 //     'debug' => true
                 // ]);
-                var_dump($data);
+                var_dump($data); 
             } else if (!empty($this->gpgPayload) && $this->method == 'PUT') {
 
                 $ch = curl_init();
