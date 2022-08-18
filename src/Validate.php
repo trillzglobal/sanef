@@ -361,7 +361,7 @@ class Validate
             "DisputeTransactionType" => $data["DisputeTransactionType"],
             "TransactionReference" => $data["TransactionReference"],
             "Amount" => $data["Amount"],
-            "TransactionDate " => $data["TransactionDate"],
+            "TransactionDate" => $data["TransactionDate"],
             "Latitude" => $data["Latitude"],
             "Longitude" => $data["Longitude"],
             "LogBookImage" => $data["LogBookImage"]
