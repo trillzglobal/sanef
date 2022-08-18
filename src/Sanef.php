@@ -142,7 +142,7 @@ class Sanef extends Validate
     public function agentDetails(array $data, $method)
     {
         $this->method = $method;
-        $this->endpoint = "api/v1/agents/agentDetails";
+        // $this->endpoint = "api/v1/agents/agentDetails";
         $data = $this->checkAgentDetails($data);
         return $this->report($data);
     }
