@@ -336,6 +336,7 @@ class Validate
     public function checkLog(array $data)
     {
         $compulsory = [
+            "SuperAgentCode" => "Provide SuperAgentCode",
             "RequestId" => "Provide RequestId",
             "BankCode" => "Provide BankCode",
             "AgentCode" => "Provide AgentCode maximum of 200 characters",
@@ -345,7 +346,7 @@ class Validate
             "TransactionReference" => "Provide TransactionReference",
             "Amount" => "Provide Amount",
             "TransactionDate " => "Provide TransactionDate",
-            "LogBookImage" => "Provide LogBookImage",
+            "LogBookImage" => "Provide LogBookImage"
         ];
 
         $diff = array_diff_key($compulsory, $data);
@@ -353,6 +354,7 @@ class Validate
             return ["status" => "error", "details" => $diff];;
         }
         $payload =  [
+            "SuperAgentCode" => $data["SuperAgentCode"],
             "RequestId" => $data["RequestId"],
             "BankCode" => $data["BankCode"],
             "AgentCode" => $data["AgentCode"],
@@ -364,7 +366,7 @@ class Validate
             "TransactionDate " => $data["TransactionDate"],
             "Latitude" => $data["Latitude"],
             "Longitude " => $data["Longitude"],
-            "LogBookImage" => $data["LogBookImage"],
+            "LogBookImage" => $data["LogBookImage"]
         ];
         $response = ["status" => "success", "details" => $payload];
         return $response;
