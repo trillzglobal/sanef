@@ -344,7 +344,7 @@ class Validate
             "DisputeTransactionType" => "Provide DisputeTransactionType",
             "TransactionReference" => "Provide TransactionReference",
             "Amount" => "Provide Amount",
-            "TransactionDate " => "Provide TransactionDate",
+            "TransactionDate" => "Provide TransactionDate",
             "LogBookImage" => "Provide LogBookImage"
         ];
 
