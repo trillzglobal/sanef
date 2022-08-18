@@ -343,8 +343,8 @@ class Validate
             "CustomerAccountNumber" => "CustomerAccountNumber must be Provided",
             "DisputeTransactionType" => "Provide DisputeTransactionType",
             "TransactionReference" => "Provide TransactionReference",
-            "TransactionDate " => "Provide TransactionDate",
             "Amount" => "Provide Amount",
+            "TransactionDate " => "Provide TransactionDate",
             "LogBookImage" => "Provide LogBookImage",
         ];
 
@@ -354,17 +354,17 @@ class Validate
         }
         $payload =  [
             "RequestId" => $data["RequestId"],
-            "AgentCode" => $data["AgentCode"],
             "BankCode" => $data["BankCode"],
+            "AgentCode" => $data["AgentCode"],
             "CustomerName" => $data["CustomerName"],
             "CustomerAccountNumber" => $data["CustomerAccountNumber"],
             "DisputeTransactionType" => $data["DisputeTransactionType"],
             "TransactionReference" => $data["TransactionReference"],
             "Amount" => $data["Amount"],
             "TransactionDate " => $data["TransactionDate"],
-            "LogBookImage" => $data["LogBookImage"],
             "Latitude" => $data["Latitude"],
             "Longitude " => $data["Longitude"],
+            "LogBookImage" => $data["LogBookImage"],
         ];
         $response = ["status" => "success", "details" => $payload];
         return $response;
