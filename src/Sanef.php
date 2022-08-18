@@ -53,7 +53,8 @@ class Sanef extends Validate
             if (!empty($this->gpgPayload) && $this->method == 'POST') {
 
                 $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $this->base_url . $this->endpoint);
+                curl_setopt($ch, CURLOPT_URL, $this->base_url);
+                // curl_setopt($ch, CURLOPT_URL, $this->base_url . $this->endpoint);
                 // curl_setopt($ch, CURLOPT_HEADER, true);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, ["ClientID: $this->superAgentCode", "Content-Type: application/json"]);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $this->gpgPayload);
@@ -69,7 +70,8 @@ class Sanef extends Validate
             } else if (!empty($this->gpgPayload) && $this->method == 'PUT') {
 
                 $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, $this->base_url . $this->endpoint);
+                curl_setopt($ch, CURLOPT_URL, $this->base_url );
+                // curl_setopt($ch, CURLOPT_URL, $this->base_url . $this->endpoint);
                 // curl_setopt($ch, CURLOPT_HEADER, true);
                 curl_setopt($ch, CURLOPT_HTTPHEADER, ["ClientID: $this->superAgentCode", "Content-Type: application/json"]);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $this->gpgPayload);
