@@ -190,7 +190,7 @@ class Sanef extends Validate
     public function log(array $data, $method)
     {
         $this->method = $method;
-        $this->endpoint = "api/v1/disputes/log";
+        //$this->endpoint = "api/v1/disputes/log";
         $data = $this->checkLog($data);
         return $this->report($data);
     }
