@@ -363,7 +363,7 @@ class Validate
             "Amount" => $data["Amount"],
             "TransactionDate " => $data["TransactionDate"],
             "Latitude" => $data["Latitude"],
-            "Longitude " => $data["Longitude"],
+            "Longitude" => $data["Longitude"],
             "LogBookImage" => $data["LogBookImage"]
         ];
         $response = ["status" => "success", "details" => $payload];
