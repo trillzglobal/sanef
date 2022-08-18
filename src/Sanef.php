@@ -187,7 +187,7 @@ class Sanef extends Validate
         return $this->report($data);
     }
 
-    public function disputeLog(array $data, $method)
+    public function log(array $data, $method)
     {
         $this->method = $method;
         $this->endpoint = "api/v1/disputes/log";
