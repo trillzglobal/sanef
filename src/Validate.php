@@ -336,17 +336,16 @@ class Validate
     public function checkLog(array $data)
     {
         $compulsory = [
-            "SuperAgentCode" => "Provide SuperAgentCode",
-            "RequestId" => "Provide RequestId",
-            "BankCode" => "Provide BankCode",
-            "AgentCode" => "Provide AgentCode maximum of 200 characters",
-            "CustomerName" => "CustomerName must be Provided",
-            "CustomerAccountNumber" => "CustomerAccountNumber must be Provided",
-            "DisputeTransactionType" => "Provide DisputeTransactionType",
-            "TransactionReference" => "Provide TransactionReference",
-            "Amount" => "Provide Amount",
-            "TransactionDate " => "Provide TransactionDate",
-            "LogBookImage" => "Provide LogBookImage"
+            "requestId" => "Provide RequestId",
+            "bankCode" => "Provide BankCode",
+            "agentCode" => "Provide AgentCode maximum of 200 characters",
+            "customerName" => "CustomerName must be Provided",
+            "customerAccountNumber" => "CustomerAccountNumber must be Provided",
+            "disputeTransactionType" => "Provide DisputeTransactionType",
+            "transactionReference" => "Provide TransactionReference",
+            "amount" => "Provide Amount",
+            "transactionDate " => "Provide TransactionDate",
+            "logBookImage" => "Provide LogBookImage"
         ];
 
         $diff = array_diff_key($compulsory, $data);
@@ -354,19 +353,18 @@ class Validate
             return ["status" => "error", "details" => $diff];;
         }
         $payload =  [
-            "SuperAgentCode" => $data["SuperAgentCode"],
-            "RequestId" => $data["RequestId"],
-            "BankCode" => $data["BankCode"],
-            "AgentCode" => $data["AgentCode"],
-            "CustomerName" => $data["CustomerName"],
-            "CustomerAccountNumber" => $data["CustomerAccountNumber"],
-            "DisputeTransactionType" => $data["DisputeTransactionType"],
-            "TransactionReference" => $data["TransactionReference"],
-            "Amount" => $data["Amount"],
-            "TransactionDate " => $data["TransactionDate"],
-            "Latitude" => $data["Latitude"],
-            "Longitude " => $data["Longitude"],
-            "LogBookImage" => $data["LogBookImage"]
+            "requestId" => $data["requestId"],
+            "bankCode" => $data["bankCode"],
+            "agentCode" => $data["agentCode"],
+            "customerName" => $data["customerName"],
+            "customerAccountNumber" => $data["customerAccountNumber"],
+            "disputeTransactionType" => $data["disputeTransactionType"],
+            "transactionReference" => $data["transactionReference"],
+            "amount" => $data["amount"],
+            "transactionDate " => $data["transactionDate"],
+            "latitude" => $data["latitude"],
+            "longitude " => $data["longitude"],
+            "logBookImage" => $data["logBookImage"]
         ];
         $response = ["status" => "success", "details" => $payload];
         return $response;
