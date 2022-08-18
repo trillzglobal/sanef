@@ -346,9 +346,6 @@ class Validate
             "TransactionDate " => "Provide TransactionDate",
             "Amount" => "Provide Amount",
             "LogBookImage" => "Provide LogBookImage",
-
-
-
         ];
 
         $diff = array_diff_key($compulsory, $data);
@@ -367,9 +364,7 @@ class Validate
             "TransactionDate " => $data["TransactionDate"],
             "LogBookImage" => $data["LogBookImage"],
             "Latitude" => $data["Latitude"],
-            "Longitude " => $data["Longitude "],
-
-
+            "Longitude " => $data["Longitude"],
         ];
         $response = ["status" => "success", "details" => $payload];
         return $response;
