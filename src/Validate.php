@@ -263,7 +263,7 @@ class Validate
             "CashCode" => $data["CashCode"],
             "AccountNumber" => $data["AccountNumber"],
             "Latitude" => $data["Latitude"],
-            "Longitude " => $data["Longitude "],
+            "Longitude" => $data["Longitude"],
 
 
         ];
@@ -296,7 +296,7 @@ class Validate
             "AccountNumber" => $data["AccountNumber"],
             "Amount" => $data["Amount"],
             "Latitude" => $data["Latitude"],
-            "Longitude " => $data["Longitude "],
+            "Longitude" => $data["Longitude"],
 
 
         ];
@@ -324,7 +324,7 @@ class Validate
             "ThirdPartyID" => $data["ThirdPartyID"],
             "AccountNumber" => $data["AccountNumber"],
             "Latitude" => $data["Latitude"],
-            "Longitude " => $data["Longitude "],
+            "Longitude" => $data["Longitude"],
 
 
         ];
